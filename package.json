@@ -1,0 +1,38 @@
+{
+  "name": "messenger-api",
+  "version": "0.0.0",
+  "description": "simple messenger api",
+  "main": "index.js",
+  "repository": "https://github.com/0xhjohnson/messenger-api",
+  "author": "Hunter Johnson <0xhjohnson@protonmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "jest",
+    "format": "prettier --write **/*.{js,json,md}"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dayjs": "^1.10.6",
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "supertest": "^6.1.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none"
+  }
+}
