@@ -1,6 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const dayjs = require('dayjs');
 
+// Mock users example: user id is used when passing recipientId and senderId
 const users = [
   {
     id: 1,
@@ -31,6 +32,7 @@ const limitMessages = (messages, allRecent) => {
     return messages.filter((message) => {
       const currentTimestamp = dayjs();
       const timestamp = dayjs(message.timestamp);
+      // dayjs() days start at 0 not 1
       return currentTimestamp.diff(timestamp, 'day') <= 30;
     });
   }
@@ -83,9 +85,8 @@ const sendMessage = (sender, recipient, message) => {
 };
 
 module.exports = {
-  users,
-  messages,
   sendMessage,
   fetchRecentMessages,
-  fetchAllRecentMessages
+  fetchAllRecentMessages,
+  limitMessages
 };

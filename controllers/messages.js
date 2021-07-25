@@ -1,5 +1,9 @@
 const messagesRouter = require('express').Router();
-const fakeDb = require('../fakeDb');
+const {
+  sendMessage,
+  fetchRecentMessages,
+  fetchAllRecentMessages
+} = require('../fakeDb');
 
 /**
  * Route for sending message to recipient
@@ -14,7 +18,7 @@ messagesRouter.post('/', (req, res) => {
       .json('sender, recipient, message must be included in JSON payload');
   }
 
-  const sentMessage = fakeDb.sendMessage(sender, recipient, message);
+  const sentMessage = sendMessage(sender, recipient, message);
 
   res.json(sentMessage);
 });
@@ -38,7 +42,7 @@ messagesRouter.get('/recipient/:recipientId/sender/:senderId', (req, res) => {
       .json('senderId, recipientId route parameters must be a number');
   }
 
-  const messages = fakeDb.fetchRecentMessages(
+  const messages = fetchRecentMessages(
     Number(recipientId),
     Number(senderId),
     allRecent === 'true'
@@ -62,7 +66,7 @@ messagesRouter.get('/recipient/:recipientId', (req, res) => {
     return res.status(200).json('recipientId route parameter must be a number');
   }
 
-  const messages = fakeDb.fetchAllRecentMessages(
+  const messages = fetchAllRecentMessages(
     Number(recipientId),
     allRecent === 'true'
   );

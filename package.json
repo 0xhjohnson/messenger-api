@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": "jest",
+    "test": "jest --verbose",
     "format": "prettier --write **/*.{js,json,md}"
   },
   "dependencies": {
